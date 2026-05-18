@@ -62,7 +62,11 @@ extension URL {
     static let mock = Defaults.URL.ehentai
 
     var isGIF: Bool {
-        pathExtension == "gif"
+        pathExtension.lowercased() == "gif"
+    }
+
+    var isAnimatable: Bool {
+        ["gif", "webp"].contains(pathExtension.lowercased())
     }
 
     func appending(queryItems: [URLQueryItem]) -> URL {
